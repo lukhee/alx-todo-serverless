@@ -57,7 +57,7 @@ export const updateTodoHandler = async(userId: string, todoId: string, todosUpda
 			userId,
 			todoId
 		},
-		UpdateExpression: 'name = :name, dueDate = :dueDate, done = :done',
+		UpdateExpression: 'set #name = :name, dueDate = :dueDate, done = :done',
 		ExpressionAttributeNames: {
 			'#name': 'name'
 		},
@@ -77,7 +77,7 @@ export const updateTodoWithUrlHandler = async(userId: string, todoId: string, at
 			userId,
 			todoId
 		},
-		UpdateExpression: 'attachmentUrl = :attachmentUrl',
+		UpdateExpression: 'set attachmentUrl = :attachmentUrl',
 		ExpressionAttributeValues: {
 			':attachmentUrl': attachmentUrl
 		}

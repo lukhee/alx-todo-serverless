@@ -62,7 +62,7 @@ custom:
         schema:  ${file(models/create-todo-model.json)}
       - name: UpdateTodoRequest
         contentType: application/json
-        schema:  ${file(models/create-todo-model.json)}
+        schema:  ${file(models/update-todo-model.json)}
 
 
 functions:
@@ -225,7 +225,6 @@ functions:
       - Effect: Allow
         Action:
           - s3:PutObject
-          - s3:GetObject
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
       - Effect: Allow
         Action:

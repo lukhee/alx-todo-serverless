@@ -42,10 +42,26 @@ export const createTodo = async(userId: string, CreateTodoRequest: CreateTodoReq
 }
 
 // :Todo Update:
-export const updateTodo = async(userId: string, todoId: string, updateTodoRequest: UpdateTodoRequest): Promise<void|Error> => {
+export const updateTodo = async (userId: string, todoId: string, updatedTodo: UpdateTodoRequest): Promise<void | Error> => {
+	logger.info(`---> Start Todo Update ----> `, {
+		userId,
+		todoId,
+		updatedTodo
+	})
 	try {
-		await updateTodoHandler(userId, todoId, updateTodoRequest)
-	} catch(e) {
+		await updateTodoHandler(userId, todoId, updatedTodo)
+		logger.info(`---> TODO Update ----> `, {
+			userId,
+			todoId,
+			updatedTodo
+		})
+	} catch (e) {
+		logger.info(`----> Todo Update Error----- -> `, {
+			Error: e,
+			userId,
+			todoId,
+			updatedTodo
+		})
 		return createError(403, `Unauthorized.`)	
 	}
 }
